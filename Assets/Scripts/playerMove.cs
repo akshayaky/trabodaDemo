@@ -33,7 +33,6 @@ public class playerMove : MonoBehaviour
 
 		if(Input.GetButtonDown("Jump") && isGrounded)
 		{
-			Debug.Log("Hello");
 			velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity ); //from equation 
 		}
     	
@@ -45,7 +44,6 @@ public class playerMove : MonoBehaviour
 		controller.Move(move * speed * Time.deltaTime);
 
 		velocity.y += 2 * gravity * Time.deltaTime;
-		Debug.Log(velocity.y);
 		controller.Move(velocity * Time.deltaTime);
     }
 }
