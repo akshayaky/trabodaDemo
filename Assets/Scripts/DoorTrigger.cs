@@ -17,6 +17,7 @@ public class DoorTrigger : MonoBehaviour
     String Question="";
     String ans = "";
     bool inside;
+    bool answered=false;
     public Text question;
     public InputField answer;
     public GameObject player;
@@ -48,11 +49,13 @@ public class DoorTrigger : MonoBehaviour
         if(answer.text == Answer && inside)
         {
             OpenDoor();
+            canvas.GetComponent<Canvas>().enabled = false;
+            answered = true;
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other == player.GetComponent<CharacterController>())
+        if (other == player.GetComponent<CharacterController>() && !answered)
         {
             UIDisplayer(true);
             SetQuestion();

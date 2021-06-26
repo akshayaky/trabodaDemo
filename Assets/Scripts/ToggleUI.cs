@@ -9,13 +9,12 @@ public class ToggleUI : MonoBehaviour
     private Canvas canvasObject;
     private bool inputMode = false;
     public InputField ansField;
-    string t;
+    string t="";
     // Start is called before the first frame update
     void Start()
     {
-        canvasObject = game.GetComponent<Canvas>();  
+        canvasObject = game.GetComponent<Canvas>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -23,11 +22,14 @@ public class ToggleUI : MonoBehaviour
         {
             canvasObject.enabled = !canvasObject.enabled;
         }
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             inputMode = !inputMode;
+            // Clear InputField when input mode is toggled
+            t = "";
+            ansField.SetTextWithoutNotify(t);
         }
-        if(inputMode && canvasObject.enabled)
+        if (inputMode && canvasObject.enabled)
         {
             foreach (char c in Input.inputString)
             {
@@ -40,7 +42,7 @@ public class ToggleUI : MonoBehaviour
                 }
                 else if ((c == '\n') || (c == '\r')) // enter/return
                 {
-                    
+
                 }
                 else
                 {
