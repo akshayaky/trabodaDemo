@@ -40,7 +40,7 @@ public class cameraController : MonoBehaviour
 		float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 		
 		rot.y += mouseX;
-		rot.x += mouseY;
+		rot.x -= mouseY;
 		// Debug.Log(rot.y);
 		rot.x = Clamp(rot.x, 80, 290);
 		// rot.y = Clamp(rot.y, 0, 190);
